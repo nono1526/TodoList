@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>todolist</title>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <label for="">輸入代辦事項： </label>
+        <input type="text" v-model="message" v-on:keydown.enter="addList">
+      </div>
+      <ul>
+        <li v-for="todo in todos">
+          {{todo.text}}
+          <button href="#" v-on:click="changeState(todo)"> {{todo.isCompleted ? '我還沒完成耶' : '我完成了'}} </button>
+          <button href="#" v-on:click="deleteRow(todo)">刪除</button>
+        </li>
+      </ul>
+      {{message}}
+    </div>
+    <script src="/dist/build.js"></script>
+  </body>
+</html>

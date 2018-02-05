@@ -1,18 +1,25 @@
 import Vue from 'vue'
 
+
 new Vue({
   el: '#app',
   data: {
     message: '',
     todos: [{
       text: '吃飯',
-      isCompleted: false,
-      debug: ''
+      isCompleted: true,
+      isFinish: false
     },
     {
       text: '吃飯',
       isCompleted: false
     }],
+    filterChoosed: 'all'
+  },
+  computed:{
+    list: function(){
+      return this.filterList(this.filterChoosed);
+    }
   },
   methods: {
     addList: function(event){
@@ -32,6 +39,29 @@ new Vue({
         ...this.todos.slice(0,index),
         ...this.todos.slice(index+1)
       ];
+    },
+    filterList: function(fn){
+      switch (fn) {
+        case 'finish':
+          return this.todos.filter((todo)=>{
+            return todo.isCompleted
+          });
+          break;
+        case 'remaining':
+          return this.todos.filter((todo)=>{
+
+            return !todo.isCompleted
+          });
+        
+        case 'all':
+          return this.todos;
+        default:
+          break;
+      }
+
+    },
+    changeFilter: function(mode){
+      return this.filterChoosed = mode;
     }
   }
 })

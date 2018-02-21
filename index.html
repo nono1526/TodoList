@@ -4,29 +4,12 @@
     <meta charset="utf-8">
     <title>todolist</title>
     <style >
-      .finish{
-        text-decoration:line-through;
-        color:red;
-      }
+   
     </style>
   </head>
   <body>
-    <div id="app">
-      <div>
-        <label for="">輸入代辦事項： </label>
-        <input type="text" v-model="message" v-on:keydown.enter="addList">
-      </div>
-      <a href="#" @click="changeFilter('finish')">完成</a>
-      <a href="#" @click="changeFilter('remaining')">未完成</a>
-      <a href="#" @click="changeFilter('all')">全部</a>
-      <ul>
-        <li v-for="todo in list" v-bind:class="{finish: todo.isCompleted}">
-          <input type="checkbox" @click="changeState(todo)" :checked="todo.isCompleted">
-          {{todo.text}}
-          <a href="#" v-on:click="deleteRow(todo)"> - 刪除</a>
-        </li>
-      </ul>
-    </div>
+    <div id="app"></div>
+
     <script src="/dist/build.js"></script>
   </body>
 </html>
